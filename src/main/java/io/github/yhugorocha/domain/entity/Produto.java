@@ -1,11 +1,23 @@
 package io.github.yhugorocha.domain.entity;
 
+import org.hibernate.validator.constraints.Length;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "produto")
 public class Produto {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Integer id;
-    private String descicao;
+
+    @Column(name = "descricao", length = 100)
+    private String descricao;
+
+    @Column(name = "preco_unitario", precision = 20, scale = 2)
     private BigDecimal preco;
 
     public Integer getId() {
@@ -17,11 +29,11 @@ public class Produto {
     }
 
     public String getDescicao() {
-        return descicao;
+        return descricao;
     }
 
-    public void setDescicao(String descicao) {
-        this.descicao = descicao;
+    public void setDescicao(String descricao) {
+        this.descricao = descricao;
     }
 
     public BigDecimal getPreco() {
